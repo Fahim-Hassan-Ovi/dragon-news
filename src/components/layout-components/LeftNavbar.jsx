@@ -16,7 +16,7 @@ const LeftNavbar = () => {
                     categories.map((category) => (
                         <NavLink 
                         to={`/category/${category.category_id}`}
-                        className="btn" key={category.category_id}>{category.category_name}</NavLink>
+                        className="btn bg-white" key={category.category_id}>{category.category_name}</NavLink>
                     ))
                 }
             </div>

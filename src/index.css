@@ -4,3 +4,7 @@
     --font-poppins: Poppins, serif;
 }
 @plugin "daisyui";
+
+a.active{
+    background-color: #E7E7E7;
+}
