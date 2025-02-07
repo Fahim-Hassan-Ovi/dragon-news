@@ -1,4 +1,4 @@
-import { FaBookmark, FaEye, FaShareAlt, FaStar } from "react-icons/fa";
+import { FaBookmark, FaEye, FaShareAlt } from "react-icons/fa";
 import ReactStars from "react-stars";
 
 const NewsCard = (props = {}) => {
@@ -18,7 +18,7 @@ const NewsCard = (props = {}) => {
                     />
                     <div>
                         <h3 className="font-semibold text-sm">{author.name}</h3>
-                        <p className="text-xs text-gray-500">{author.published_date.split(" ")[0]}</p>
+                        <p className="text-xs text-gray-500">{author.published_date?.split(" ")[0]}</p>
                     </div>
                 </div>
 
