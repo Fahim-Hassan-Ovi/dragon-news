@@ -24,21 +24,24 @@ const Register = () => {
             setError({ ...error, password: "Password must be more than 5 character" });
             return;
         }
-        console.log({ name, photo, email, password });
+        // console.log({ name, photo, email, password });
         createNewUser(email, password)
             .then(result => {
                 const user = result.user;
                 setUser(user);
-                console.log(user);
+                // console.log(user);
                 updateUserProfile({displayName: name, photoURL: photo})
                 .then(() =>{
                     navigate("/");
                 })
                 .catch(err=>{
-                    console.log(err.message);
+                    
+                    // console.log(err.message);
                 })
             })
-            .catch(error => console.log('Error', error.message));
+            .catch(error => {
+                // console.log('Error', error.message)
+            });
     }
     return (
         <div className="min-h-screen flex justify-center items-center">

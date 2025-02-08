@@ -6,7 +6,7 @@ import { IoIosArrowRoundBack } from "react-icons/io";
 const NewsDetails = () => {
     const data = useLoaderData();
     const news = data.data[0];
-    console.log(news);
+    // console.log(news);
     return (
         <div>
             <header>
@@ -28,7 +28,7 @@ const NewsDetails = () => {
                                 details
                             }</p>
                             <div className="card-actions">
-                                <Link to={`/category/&{news?.category_id}`} className="btn btn-primary bg-[#D72050] border-none shadow-none"><IoIosArrowRoundBack size={20}/> Back to category</Link>
+                                <Link to={`/category/${news?.category_id}`} className="btn btn-primary bg-[#D72050] border-none shadow-none"><IoIosArrowRoundBack size={20}/> Back to category</Link>
                             </div>
                         </div>
                     </div>

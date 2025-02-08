@@ -5,7 +5,7 @@ import ReactStars from "react-stars";
 const NewsCard = (props = {}) => {
     const { news } = props || {};
     const { title, author, thumbnail_url, details, rating, total_view, _id } = news;
-    console.log(news);
+    // console.log(news);
     return (
         <div className="card bg-white border-1 border-gray-200  ">
             {/* Author Info & Actions */}
