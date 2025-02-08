@@ -1,9 +1,10 @@
 import { FaBookmark, FaEye, FaShareAlt } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import ReactStars from "react-stars";
 
 const NewsCard = (props = {}) => {
     const { news } = props || {};
-    const { title, author, thumbnail_url, details, rating, total_view } = news;
+    const { title, author, thumbnail_url, details, rating, total_view, _id } = news;
     console.log(news);
     return (
         <div className="card bg-white border-1 border-gray-200  ">
@@ -41,7 +42,7 @@ const NewsCard = (props = {}) => {
                 {/* Description */}
                 <p className="text-sm text-[#706F6F] mb-4 mt-8">
                     {details.length > 150 ? `${details.slice(0, 150)}...` : details}{" "}
-                    <span className="text-[#FF8C47] font-semibold cursor-pointer">Read More</span>
+                    <Link to={`/news/${_id}`} className="text-[#FF8C47] font-semibold cursor-pointer">Read More</Link>
                 </p>
                 <hr className="text-gray-200" />
                 {/* Footer: Rating & Views */}
