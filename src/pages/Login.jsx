@@ -1,23 +1,29 @@
-import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 
 const Login = () => {
-    const {userLogin, setUser} = useContext(AuthContext);
-    const handleSubmit = (e) =>{
+    const { userLogin, setUser } = useContext(AuthContext);
+    const [error, setError] = useState({});
+    const location = useLocation();
+    const navigate = useNavigate();
+    console.log(location)
+    const handleSubmit = (e) => {
         e.preventDefault();
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
         console.log(email, password);
         userLogin(email, password)
-        .then(result =>{
-            const user = result.user;
-            setUser(user);
-        })
-        .catch(error =>{
-            alert(error.code);
-        })
+            .then(result => {
+                const user = result.user;
+                setUser(user);
+                navigate(location?.state ? location.state : "/");
+            })
+            .catch(err => {
+                // alert(error.code);
+                setError({ ...error, login: err.code })
+            })
     }
     return (
         <div className="min-h-screen flex justify-center items-center">
@@ -35,6 +41,16 @@ const Login = () => {
                             <span className="label-text font-bold">Password</span>
                         </label>
                         <input type="password" name="password" placeholder="password" className="input input-bordered bg-[#F3F3F3]" required />
+                        {
+                            error.login && (
+                                <>
+                                <label className="label  text-sm text-red-600">
+                                    {error.login}
+                                </label>
+                                <br />
+                                </>
+                            )
+                        }
                         <label className="label">
                             <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                         </label>
